@@ -1,7 +1,12 @@
 import React from 'react';
 
+function Hello({name}) {
+  return (
+    <h1>안녕하세요, <strong>{name}</strong> 님</h1>
+  )
+}
+
 function Food({fav}) {
-  console.log(fav)
   return (
     <h2>이건 {fav} 컴포넌트지</h2>
   )
@@ -10,11 +15,10 @@ function Food({fav}) {
 function App() {
   return (
     <div>
-      <h1>Hello React JS!</h1>
-      <p>이건 토마토 컴포넌트야</p>
+      <Hello name="태준" />
       <Food fav="치킨" />
       <Food fav="국밥" />
-      <Food fav="샐러드" />
+      <Food fav={['배열1', '배열2', '배열3']} />
     </div>
   );
 }
