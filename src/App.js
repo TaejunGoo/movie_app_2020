@@ -1,24 +1,48 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
-function Hello({name}) {
+function Food({fav, pic, rating}) {
   return (
-    <h1>안녕하세요, <strong>{name}</strong> 님</h1>
+    <div>
+      <h2>이건 {fav} 컴포넌트지</h2>
+      <h3>{rating}점</h3>
+      <img src={pic} alt={fav}/>
+    </div>
   )
 }
 
-function Food({fav}) {
-  return (
-    <h2>이건 {fav} 컴포넌트지</h2>
-  )
+Food.propTypes = {
+  fav: PropTypes.string.isRequired,
+  pic: PropTypes.string,
+  rating: PropTypes.number.isRequired
 }
+// propTypes를 이용하여 각 prop이 어떤 형태로 제공되어야하는지 정의 할 수 있다
+
+const foodIlike = [
+  {
+    id : 1,
+    name : "beer",
+    image : "https://produits.bienmanger.com/34491-0w600h600_Corona_Extra_Mexican_Blonde_Beer.jpg",
+    rating : 4
+  },
+  {
+    id : 2,
+    name : "chicken",
+    image : "https://cdn.apartmenttherapy.info/image/fetch/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/https%3A%2F%2Fstorage.googleapis.com%2Fgen-atmedia%2F3%2F2017%2F04%2F0716e0ca369a57b31b821ea090891e90fce7123e.jpeg",
+    rating : 4.9
+  },
+  {
+    id : 3,
+    name : "fried rice",
+    image : "https://www.fifteenspatulas.com/wp-content/uploads/2012/03/Fried-Rice-Fifteen-Spatulas-8-640x427.jpg",
+    rating : 3
+  }
+]
 
 function App() {
   return (
     <div>
-      <Hello name="태준" />
-      <Food fav="치킨" />
-      <Food fav="국밥" />
-      <Food fav={['배열1', '배열2', '배열3']} />
+      {foodIlike.map(dish => <Food key={dish.id} fav={dish.name} pic={dish.image} rating={dish.rating} />)}
     </div>
   );
 }
