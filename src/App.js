@@ -1,6 +1,14 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
+function JustTest({id, nName, word}){
+  return(
+    <div>
+      <p> {nName}({id}) say "{word}" </p>
+    </div>
+  )
+}
+
 function Food({fav, pic, rating}) {
   return (
     <div>
@@ -39,10 +47,29 @@ const foodIlike = [
   }
 ]
 
+const users = [
+  {
+    id : "gtx1",
+    name : "nick",
+    word : "Hi!"
+  },
+  {
+    id : "gtxggle",
+    name : "태준",
+    word : "안녕하세요"
+  },
+  {
+    id : "kim",
+    name : "김이박",
+    word : "안녕하슈"
+  }
+]
+
 function App() {
   return (
     <div>
       {foodIlike.map(dish => <Food key={dish.id} fav={dish.name} pic={dish.image} rating={dish.rating} />)}
+      {users.map( people => <JustTest id={people.id} nName={people.name} word={people.word} /> )}
     </div>
   );
 }
