@@ -19,10 +19,25 @@ function Food({fav, pic, rating}) {
   )
 }
 
+function MovieChart({sbj, genre, ratings}) {
+  return (
+    <div>
+      <p>Subject : {sbj}</p>
+      <p>genre : {genre}</p>
+      <p>rating : {ratings}/5</p>
+    </div>
+  )
+}
+
 Food.propTypes = {
   fav: PropTypes.string.isRequired,
   pic: PropTypes.string,
   rating: PropTypes.number.isRequired
+}
+
+MovieChart.propTypes = {
+  sbj: PropTypes.string.isRequired,
+  ratings: PropTypes.number
 }
 // propTypes를 이용하여 각 prop이 어떤 형태로 제공되어야하는지 정의 할 수 있다
 
@@ -65,11 +80,35 @@ const users = [
   }
 ]
 
+const movies = [
+  {
+    sbj : "Lord of Rings",
+    genre : "fantasy",
+    ratings : 5
+  },
+  {
+    sbj : "Star Wars Series",
+    genre : "space opera",
+    ratings : 3
+  },
+  {
+    sbj: "kung ju soccer",
+    genre : "comedy",
+    ratings : 5
+  },
+  {
+    sbj : "Gravity",
+    genre : "Science Fiction",
+    ratings : 5
+  }
+]
+
 function App() {
   return (
     <div>
       {foodIlike.map(dish => <Food key={dish.id} fav={dish.name} pic={dish.image} rating={dish.rating} />)}
-      {users.map( people => <JustTest id={people.id} nName={people.name} word={people.word} /> )}
+      {users.map( people => <JustTest key={people.id} id={people.id} nName={people.name} word={people.word} /> )}
+      {movies.map(title => <MovieChart key={title.sbj} sbj={title.sbj} genre={title.genre} ratings={title.ratings} />)}
     </div>
   );
 }
