@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from "prop-types";
 
 class App extends React.Component{
+  constructor(props){
+    super(props);
+    console.log('Component Mounted')
+  }
+  // 컴포넌트가 mount 될 때 처음으로 호출되는 것
   state = {
     count : 0
   };
@@ -19,6 +24,7 @@ class App extends React.Component{
     // setState를 할 떄 외부의 상태에 의존하지 않아야?
   };
   render(){
+    console.log('Component Redering')
     return (
     <div>    
       <h1>지금 숫자는 {this.state.count} 이다 </h1>
@@ -26,6 +32,16 @@ class App extends React.Component{
       <button onClick={this.minus}>빼기</button>
     </div>
     )
+  }
+  componentDidMount(){
+    console.log("Component Rendered")
+  };
+  
+  componentDidUpdate(){
+    console.log("Component updated")
+  }
+  componentWillUnmount(){
+    console.log("Component goodbye")
   }
 }
 
